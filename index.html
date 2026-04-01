@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mega | Android Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0d1117;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  padding:15px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:100;
+}
+nav a{
+  color:#3ddc84;
+  text-decoration:none;
+  font-weight:600;
+}
+nav a:hover{color:#fff;}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:120px 20px 50px;
+}
+
+.profile-img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:3px solid #3ddc84;
+  margin-bottom:15px;
+  object-fit:cover;
+  box-shadow:0 0 20px #3ddc84;
+}
+
+header h1{
+  font-size:3rem;
+  color:#3ddc84;
+}
+
+header p{
+  color:#aaa;
+  margin-top:10px;
+}
+
+/* GLASS CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  border-radius:15px;
+  padding:20px;
+  margin:20px auto;
+  max-width:700px;
+}
+
+/* PROJECTS */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  padding:40px;
+}
+
+.project{
+  background:rgba(255,255,255,0.05);
+  border-radius:15px;
+  overflow:hidden;
+  transition:0.4s;
+  cursor:pointer;
+}
+.project:hover{
+  transform:translateY(-10px);
+  box-shadow:0 15px 30px rgba(61,220,132,0.3);
+}
+
+.project img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.project-placeholder{
+  width:100%;
+  height:200px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:3rem;
+}
+
+.project h3{
+  padding:15px;
+  color:#3ddc84;
+}
+
+.project p{
+  padding:0 15px 20px;
+  color:#ccc;
+  font-size:0.9rem;
+}
+
+.project-tag{
+  display:inline-block;
+  margin:0 15px 15px;
+  padding:3px 10px;
+  border-radius:20px;
+  font-size:0.75rem;
+  background:rgba(61,220,132,0.15);
+  border:1px solid rgba(61,220,132,0.4);
+  color:#3ddc84;
+}
+
+/* SKILLS */
+.skills{
+  text-align:center;
+  padding:40px;
+}
+
+.skill{
+  display:inline-block;
+  padding:10px 20px;
+  margin:10px;
+  border-radius:30px;
+  border:1px solid #3ddc84;
+  background:rgba(61,220,132,0.1);
+}
+
+/* ── CONTACT (fixed) ── */
+.contact{
+  padding:60px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.contact h2{
+  color:#3ddc84;
+  margin-bottom:32px;
+  font-size:1.8rem;
+}
+
+.contact-form{
+  width:100%;
+  max-width:520px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:32px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.contact-form label{
+  font-size:0.8rem;
+  color:#aaa;
+  margin-bottom:4px;
+  display:block;
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:12px 14px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:10px;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  font-size:0.9rem;
+  outline:none;
+  transition:border 0.3s;
+  resize:vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+  border-color:#3ddc84;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+  color:#666;
+}
+
+.contact-form textarea{
+  min-height:130px;
+}
+
+.contact-form button{
+  width:100%;
+  padding:13px;
+  background:#3ddc84;
+  color:#0d1117;
+  font-family:'Poppins',sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  transition:background 0.3s, transform 0.2s;
+  margin-top:4px;
+}
+
+.contact-form button:hover{
+  background:#2fc470;
+  transform:translateY(-2px);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:rgba(0,0,0,0.6);
+}
+footer a{
+  color:#3ddc84;
+  margin:0 10px;
+  text-decoration:none;
+}
+
+/* ANIMATION */
+.hidden{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s;
+}
+.show{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<header id="about">
+  <img src="mega_profile_pic.jpeg" class="profile-img" alt="Mega">
+  <h1>Mega</h1>
+  <p>Android Developer • Kotlin • Jetpack Compose</p>
+
+  <div class="card hidden">
+    <p>
+      Passionate Android developer building modern apps with clean UI and efficient performance.
+      Experienced in Firebase, SQL, server-side synchronization, and real-world app development.
+    </p>
+  </div>
+</header>
+
+<section id="projects">
+  <h2 style="text-align:center;color:#3ddc84;">Projects</h2>
+
+  <div class="projects">
+
+    <!-- Existing projects -->
+    <div class="project hidden">
+      <img src="mark_entry.jpg" alt="Marks Entry">
+      <h3>Marks Entry</h3>
+      <p>Teacher-friendly marks management system with easy data entry and real-time updates.</p>
+      <span class="project-tag">Android</span>
+    </div>
+
+    <div class="project hidden">
+      <img src="switch_user.jpg" alt="Switch User">
+      <h3>Switch User</h3>
+      <p>Multiple account switching feature with seamless session management.</p>
+      <span class="project-tag">Android</span>
+    </div>
+
+    <div class="project hidden">
+      <img src="review_class.jpg" alt="Student Review">
+      <h3>Student Review</h3>
+      <p>Review and feedback system for students and teachers.</p>
+      <span class="project-tag">Android</span>
+    </div>
+
+    <div class="project hidden">
+      <img src="view_my_marks.jpg" alt="View Marks">
+      <h3>View Marks</h3>
+      <p>Students can track their marks visually with charts and history.</p>
+      <span class="project-tag">Android</span>
+    </div>
+
+    <div class="project hidden">
+      <img src="expense_tracker.jpg" alt="Expense Tracker">
+      <h3>Expense Tracker</h3>
+      <p>Track daily expenses easily with categories and monthly summaries.</p>
+      <span class="project-tag">Android</span>
+    </div>
+
+    <!-- New placeholder projects — edit name, description, and image src -->
+
+    <div class="project hidden">
+      <div class="project-placeholder" style="background:rgba(61,220,132,0.07);">📡</div>
+      <h3>Real-Time Sync Engine</h3>
+      <p>Server-side data synchronization between Android clients and backend using WebSockets and REST APIs. Edit this description with your real project details.</p>
+      <span class="project-tag">Android</span>
+      <span class="project-tag">Server Sync</span>
+    </div>
+
+    <div class="project hidden">
+      <div class="project-placeholder" style="background:rgba(61,220,132,0.07);">🔄</div>
+      <h3>Offline-First Sync App</h3>
+      <p>Android app with offline support and automatic background sync when connectivity is restored. Replace this with your actual project info.</p>
+      <span class="project-tag">Android</span>
+      <span class="project-tag">Sync</span>
+    </div>
+
+    <div class="project hidden">
+      <div class="project-placeholder" style="background:rgba(61,220,132,0.07);">🛡️</div>
+      <h3>Auth & Session Manager</h3>
+      <p>Secure login, token refresh, and multi-user session handling with server-side validation. Update with your real project once ready.</p>
+      <span class="project-tag">Android</span>
+      <span class="project-tag">Firebase</span>
+    </div>
+
+    <div class="project hidden">
+      <div class="project-placeholder" style="background:rgba(61,220,132,0.07);">📊</div>
+      <h3>Live Dashboard App</h3>
+      <p>Real-time data dashboard synced from a server, displaying live metrics and notifications. Replace with your actual project description.</p>
+      <span class="project-tag">Android</span>
+      <span class="project-tag">Server Sync</span>
+    </div>
+
+  </div>
+</section>
+
+<section class="skills hidden" id="skills">
+  <h2 style="color:#3ddc84;">Skills</h2>
+  <span class="skill">Kotlin</span>
+  <span class="skill">Android</span>
+  <span class="skill">Firebase</span>
+  <span class="skill">SQL</span>
+  <span class="skill">Jetpack Compose</span>
+  <span class="skill">REST APIs</span>
+  <span class="skill">WebSockets</span>
+  <span class="skill">Server Sync</span>
+</section>
+
+<!-- Fixed Contact Section -->
+<section class="contact hidden" id="contact">
+  <h2>Contact</h2>
+  <div class="contact-form">
+    <div>
+      <label>Your Name</label>
+      <input type="text" placeholder="e.g. Ravi Kumar">
+    </div>
+    <div>
+      <label>Email Address</label>
+      <input type="email" placeholder="e.g. ravi@email.com">
+    </div>
+    <div>
+      <label>Message</label>
+      <textarea placeholder="Write your message here..."></textarea>
+    </div>
+    <button>Send Message</button>
+  </div>
+</section>
+
+<footer>
+  <p>Follow me:</p>
+  <a href="https://instagram.com/megavarshini_k_s">Instagram</a>
+  <a href="https://linkedin.com/in/MEGA K S">LinkedIn</a>
+  <a href="https://github.com/megavarshini-k-s">GitHub</a>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
